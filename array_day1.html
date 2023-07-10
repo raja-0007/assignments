@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function numbersThenCharacters(arr) {
+            let [a, b, c, d] = arr
+
+            let full = []
+            for (i = 0; i < a.length; i++) {
+                full.push(a[i])
+            }
+            for (i = 0; i < b.length; i++) {
+                full.push(b[i])
+
+            }
+            for (j = 0; j < c.length; j++) {
+
+                full.push(c[j])
+            }
+            for (j = 0; j < d.length; j++) {
+
+                full.push(d[j])
+            }
+            full.sort()
+            a = full.slice(0, a.length)
+            b = full.slice(a.length,a.length+b.length)
+            c = full.slice(a.length+b.length, a.length+b.length+c.length)
+            d = full.slice(a.length+b.length+c.length,full.length)
+            console.log(arr)
+            arr = [a, b, c, d]
+            
+            
+            return arr
+        }
+        let result = numbersThenCharacters([
+            [11, 12, 24, 23, "a", "b"],
+            [56, "c", 45], [67, "d"],
+            ["f", "e", 78]
+        ])
+        let [e, f, g, h] = result
+        console.log(result)
+    </script>
+</body>
+
+</html>
