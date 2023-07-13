@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function spotlightMap(arr) {
+            const rows = arr.length;
+            const cols = arr[0].length;
+            const arr2 = [];
+            for (let i = 0; i < rows; i++) {
+                arr2[i] = [];
+                for (let j = 0; j < cols; j++) {
+                    let sum = arr[i][j];
+
+
+                    for (let x = -1; x <= 1; x++) {
+                        for (let y = -1; y <= 1; y++) {
+                            if (i + x >= 0 && i + x < rows && j + y >= 0 && j + y < cols) {
+                                sum += arr[i + x][j + y];
+                            }
+                        }
+                    }
+
+                    arr2[i][j] = sum - arr[i][j];
+                }
+            }
+            console.log(arr2)
+
+        }
+        spotlightMap([
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]
+        ])
+        spotlightMap([
+            [2, 6, 1, 3, 7],
+            [8, 5, 9, 4, 0]
+        ]) 
+
+        spotlightMap([[3]])
+    </script>
+</body>
+
+</html>
