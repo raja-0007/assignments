@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function groupSeats(arr, n) {
+            var r = arr.length
+            var c = arr[0].length
+            var seating = 0
+            for (i = 0; i < r; i++) {
+                for (j = 0; j < c; j++) {
+                    var count = 0
+                    if (arr[i][j] == 0) {
+                        for (k = 1; k < n; k++) {
+                            if (arr[i][j + k] != 0) {
+                                break
+                            }
+                            else if (arr[i][j + k] == 0 && k == n - 1) {
+                                seating++
+                            }
+                        }
+                    }
+                }
+            }
+            console.log('input:')
+            console.log(arr)
+            console.log('output: '+seating)
+        }
+        groupSeats([
+            [1, 0, 0, 0, 1, 1, 1],
+            [1, 1, 1, 0, 1, 1, 1],
+            [1, 0, 1, 0, 1, 0, 1],
+            [1, 1, 0, 1, 1, 0, 1],
+            [1, 0, 1, 1, 1, 1, 1],
+            [1, 0, 1, 1, 0, 0, 0]
+        ], 3)
+        groupSeats([
+            [1, 0, 1, 0, 1, 0, 1],
+            [0, 1, 0, 1, 0, 1, 0],
+            [0, 0, 1, 1, 1, 1, 1],
+            [1, 0, 1, 1, 0, 0, 1],
+            [1, 1, 1, 0, 1, 0, 1],
+            [0, 1, 1, 1, 1, 0, 0]
+        ], 2)
+        groupSeats([
+            [1, 0, 1, 0, 1, 0, 1],
+            [0, 1, 0, 0, 0, 0, 0],
+        ], 4)
+    </script>
+</body>
+
+</html>
