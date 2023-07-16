@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function join(arr){
+            const len = arr.length
+            var arr2 = arr[0]
+            var str1 = arr2
+            var str2 = ''
+            
+            var result = []
+            
+            var com = []
+            
+            console.log('input:')
+            console.log(arr)
+            for(i=1;i<len;i++){
+                
+                var substr = ''
+                str2 = arr[i]
+                var com2 = []
+                var sub = ''
+                for(j=0;j<arr[i].length+1;j++){
+                    
+                    if(str1.includes(str2[j])){
+                        if(!com2.includes(str2[j])){
+                            com2.push(str2[j])
+                        }
+                    }
+                    sub += arr[i][j]
+                    /*if(arr2.includes(arr[i].slice(0,j))){
+                        
+                        substr = arr[i].slice(0,j)
+                    }*/
+                    if(arr2.includes(sub)){
+                        substr = sub
+                    }
+                }
+                
+                com.push(com2.length)
+                
+                str1 = str2
+                
+                arr[i] = arr[i].replace(substr,'')
+                arr2 += arr[i]
+                
+            }
+            
+            result.push(arr2,Math.min.apply(null,com))
+            
+           
+            console.log('output:')
+            
+            console.log(result)
+        }
+        join(["oven", "envier", "erase", "serious"])
+        join(["move", "over", "very"])
+        join(["to", "ops", "psy", "syllable"])
+        join(["aaa", "bbb", "ccc", "ddd"])
+        
+    </script>
+</body>
+</html>
