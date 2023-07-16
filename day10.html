@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function bandNamesSort(arr) {
+            const arr2 = []
+            
+            for(i=0;i<arr.length;i++){
+                
+                /*if(arr[i].includes('The')){
+                    arr[i] = arr[i].substring(4,)
+                    console.log(arr[i])
+                    arr2.push(arr[i])
+                }
+                else if(arr[i].includes('An')){
+                    arr[i].replace('An','')
+                    arr2.push(arr[i])
+                }
+                else if(arr[i].includes('A')){
+                    arr[i].replace('A','')
+                    arr2.push(arr[i])
+                }
+                else{
+                    arr2.push(arr[i])
+                }*/
+                var arr3 = arr[i].split(' ')
+                if(arr3[0]=='The' || arr3[0]=='An' || arr3[0]=='A'){
+                    arr3.shift()
+                    arr2.push(arr3.join(" "))
+                }
+                else{
+                    arr2.push(arr3.join(' '))
+                }
+            }
+            arr2.sort()
+            for(i=0;i<arr.length;i++){
+                for(j=0;j<arr2.length;j++){
+                    if(arr[i].includes(arr2[j])){
+                    arr2[j] = arr[i]
+                }
+                }
+            }
+            console.log('input:')
+            console.log(arr)
+            console.log('output:')
+            console.log(arr2)
+        }
+        bandNamesSort(["The New Yardbirds", "The Beatles", "The Square Roots", "On A Friday", "An Irony"])
+        //➞ ["The Beatles", "An Irony", "The New Yardbirds", "On A Friday", "The Square Roots"]
+        bandNamesSort(["The Platters", "A Yard of Yarn", "The Everly Brothers", "A Monster Effect", "The Sex Maggots"])
+        //➞ ["The Everly Brothers", "A Monster Effect", "The Platters", "The Sex Maggots", "A Yard of Yarn"]
+        bandNamesSort(["But Myth", "An Old Dog", "Def Leppard", "The Any Glitters", "The Dawn"])
+//➞ ["The Any Glitters", "But Myth", "The Dawn", "Def Leppard", "An Old Dog"]
+    </script>
+</body>
+
+</html>
