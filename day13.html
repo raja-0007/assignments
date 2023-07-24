@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        frequencySort = (str) => {
+            var arr = str.split('')
+            var vals = []
+            var arr2 = []
+            arr.sort()
+            let counts = {}
+            var c = 0
+            for (i = 0; i < arr.length; i += c) {
+                let count = 1
+                for (j = i + 1; j < arr.length; j++) {
+
+                    if (arr[i] == arr[j]) {
+                        count += 1
+
+                    }
+                    else if (arr[i] != arr[j]) {
+
+                        break
+                    }
+
+                }
+
+
+                counts[arr[i]] = count
+                c = count
+            }
+            for (i in counts) {
+                vals.push(counts[i])
+            }
+            vals.sort().reverse()
+            for (i = 0; i < vals.length; i++) {
+
+                for (j in counts) {
+                    if (vals[i] == counts[j]) {
+                        console.log(vals[i], counts[j])
+                        for (k = 0; k < vals[i]; k++) {
+                            arr2.push(j)
+                        }
+                        delete counts[j]
+                    }
+                    
+                }
+
+            }
+            console.log(vals, counts)
+            console.log(arr2)
+        }
+        frequencySort("tree") //➞ "eert"
+        frequencySort("cccaaa") //➞ "aaaccc"
+        frequencySort("Aabb") //➞ "bbAa"
+    </script>
+</body>
+
+</html>
