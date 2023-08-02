@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function hasUniqueCharacters(str){
+            var obj = {}
+            for(i=0;i<str.length;i++){
+                if(obj[str[i]]){
+                    return false
+                }
+                else{
+                    obj[str[i]] = true
+                }
+            }
+            return true
+        }
+        console.log(hasUniqueCharacters("abcdefg")); // Output: true
+        console.log(hasUniqueCharacters("hello")); // Output: false
+    </script>
+</body>
+
+</html>

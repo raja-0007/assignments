@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function hasSumOfTwo(arr1, arr2, targetSum) {
+            for (i = 0; i < arr1.length; i++) {
+                for (j = 0; j < arr2.length; j++) {
+                    if (arr1[i] + arr2[j] == targetSum) {
+                        //console.log(arr1[i], arr2[j])
+                        return true
+                    }
+
+                }
+            }
+            return false
+        }
+        const arr1 = [1, 4, 6, 8];
+        const arr2 = [3, 7, 2, 9];
+        const targetSum = 13;
+        console.log(hasSumOfTwo(arr1, arr2, targetSum)); // Output: true (6 from arr1 + 7 from arr2 = 13)
+    </script>
+</body>
+
+</html>
