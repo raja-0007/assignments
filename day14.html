@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function lks(num) {
+            num = num.toString()
+            var arr2 = num.split('')
+            var res = ''
+            for (i = 0; i < arr2.length; i++) {
+                var numfreq = 1
+                for (j = i + 1; j < arr2.length; j++) {
+                    if (arr2[j] == arr2[i]) {
+                        numfreq++
+                    }
+                    else {
+                        break
+                    }
+                }
+                res += numfreq.toString() + arr2[i]
+                i = j - 1
+            }
+            return res
+        }
+        function lookAndSay(a, n) {
+            var arr = [a]
+
+            while (arr.length != n) {
+                var k = lks(arr[arr.length - 1])
+                arr.push(parseInt(k))
+            }
+            console.log('output:')
+            console.log(arr)
+        }
+
+        lookAndSay(1, 7) //➞ [1, 11, 21, 1211, 111221, 312211, 13112221]
+        lookAndSay(123, 4) //➞ [123, 111213, 31121113, 1321123113]
+        lookAndSay(70, 5) //➞ [70, 1710, 11171110, 31173110, 132117132110]
+    </script>
+</body>
+
+</html>
