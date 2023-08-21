@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function textJustification(words, maxWidth) {
+            const result = [];
+            let line = [];
+            let lineLength = 0;
+
+            for (const word of words) {
+                if (lineLength + line.length + word.length <= maxWidth) {
+                    line.push(word);
+                    lineLength += word.length;
+                } else {
+                    result.push(line);
+                    line = [word];
+                    lineLength = word.length;
+                }
+            }
+
+            result.push(line);
+
+            for (let i = 0; i < result.length - 1; i++) {
+                line = result[i];
+                const totalSpaces = maxWidth - line.reduce((acc, word) => acc + word.length, 0);
+                const numGaps = line.length - 1;
+
+                if (numGaps === 0) {
+                    result[i] = line[0] + ' '.repeat(totalSpaces);
+                } else {
+                    const minSpaces = Math.floor(totalSpaces / numGaps);
+                    const extraSpaces = totalSpaces % numGaps;
+                    let justifiedLine = line[0];
+
+                    for (let j = 1; j < line.length; j++) {
+                        const spaces = minSpaces + (j <= extraSpaces ? 1 : 0);
+                        justifiedLine += ' '.repeat(spaces) + line[j];
+                    }
+
+                    result[i] = justifiedLine;
+                }
+            }
+
+            result[result.length - 1] = result[result.length - 1].join(' ').padEnd(maxWidth);
+
+            return result;
+        }
+
+        const words = ["This", "is", "an", "example", "of", "text", "justification."];
+        const maxWidth = 16;
+        console.log(textJustification(words, maxWidth));
+    </script>
+</body>
+
+</html>
